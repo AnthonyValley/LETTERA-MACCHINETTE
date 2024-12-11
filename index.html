@@ -11,6 +11,7 @@
             color: #333;
             margin: 0;
             padding: 0;
+            transition: all 0.3s ease;
         }
         .container {
             width: 80%;
@@ -27,11 +28,25 @@
             font-size: 16px;
             line-height: 1.6;
         }
-        .footer {
-            text-align: center;
-            font-size: 14px;
-            margin-top: 30px;
-            color: #777;
+        #highlight {
+            background-color: yellow;
+            font-size: 1.5em;
+            color: red;
+            transition: all 0.3s ease;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff4500;
         }
     </style>
 </head>
@@ -48,17 +63,36 @@
 
     <p>Perché, dunque, non fare il passo decisivo verso il progresso? Perché non introdurre delle macchinette moderne e funzionanti, che possano offrire una gamma di prodotti adeguata alle esigenze di noi studenti? Non stiamo parlando di un lusso, ma di un bisogno primario che riguarda tutti. La sete e la fame non aspettano il suono della campanella!</p>
 
-    <p>Vi chiedo quindi di prendere seriamente in considerazione questa mia richiesta e di agire con la tempestività che la situazione richiede. Non si tratta di una "comodità" ma di un diritto che ci spetta, proprio come quello di avere un ambiente scolastico che, finalmente, riconosca anche le nostre necessità quotidiane.</p>
+    <p id="highlight">Vi chiedo quindi di prendere seriamente in considerazione questa mia richiesta e di agire con la tempestività che la situazione richiede. Non si tratta di una "comodità" ma di un diritto che ci spetta, proprio come quello di avere un ambiente scolastico che, finalmente, riconosca anche le nostre necessità quotidiane.</p>
 
     <p>In attesa di un vostro riscontro, rimango, come sempre, in attesa di una soluzione che possa finalmente migliorare la qualità della nostra vita scolastica.</p>
 
     <p>Cordiali saluti,</p>
     <p><strong>Un frustrato studente della scuola superiore</strong></p>
 
+    <button onclick="ingrandisci()">Ingrandisci e evidenzia la frase</button>
+
     <div class="footer">
         <p>Scuola Secondaria di Primo Grado "Lamentoso e Scontento"</p>
     </div>
 </div>
+
+<script>
+    let clickCount = 0;
+
+    function ingrandisci() {
+        const highlight = document.getElementById('highlight');
+        clickCount++;
+
+        // Aumenta la dimensione del testo e cambia il colore ogni volta che clicchi
+        highlight.style.fontSize = `${1.5 + clickCount * 0.5}em`; // Ingrandisce progressivamente
+        highlight.style.backgroundColor = clickCount % 2 === 0 ? 'yellow' : 'red'; // Cambia il colore di evidenza
+
+        // Cambia i colori della pagina in modo aggressivo
+        document.body.style.backgroundColor = clickCount % 2 === 0 ? '#ff4d4d' : '#ff6666'; // Cambia lo sfondo
+        document.body.style.color = clickCount % 2 === 0 ? 'white' : 'black'; // Cambia il testo
+    }
+</script>
 
 </body>
 </html>
